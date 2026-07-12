@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-display: "Cinzel", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+
+  --color-background: #0c0c0e;
+  --color-surface-dim: #131315;
+  --color-surface-container: #1b1b1d;
+  --color-surface-card: #201f21;
+  --color-primary: #e2c399;
+  --color-primary-container: #c5a880;
+  --color-secondary: #cac6bf;
+  --color-outline: #998f83;
+  --color-outline-variant: #4d463c;
+  --color-on-surface: #e5e1e4;
+  --color-on-surface-variant: #d1c5b8;
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-card: var(--color-surface-card);
+  --color-primary: var(--color-primary);
+  --color-primary-container: var(--color-primary-container);
+  --color-secondary: var(--color-secondary);
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+/* Custom styles for high-end cinematic experience */
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Clean micro scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-container);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Cinematic lighting leak glows */
+.cinematic-glow {
+  box-shadow: 0 0 60px 5px rgba(197, 168, 128, 0.08);
+}
+
+.cinematic-glow-strong {
+  box-shadow: 0 0 80px 10px rgba(197, 168, 128, 0.15);
+}
+
+.cinematic-overlay {
+  background: linear-gradient(to bottom, rgba(12, 12, 14, 0.3), rgba(12, 12, 14, 0.95));
+}
+
+/* Frosted matte nav — soft blur + saturation lift, no glossy flatness */
+.frosted-nav {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Custom Masonry Column Layout rules */
+.stills-masonry {
+  column-count: 1;
+  column-gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .stills-masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stills-masonry {
+    column-count: 3;
+  }
+}
+
+.stills-masonry-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
+}

@@ -1,59 +1,51 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
 import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
-
 import config from '@/payload.config'
-import './styles.css'
+import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
+import RecentChapters from "@/components/RecentChapters";
+import ShowreelSection from "@/components/ShowreelSection";
+
+export const revalidate = 0; // Ensures fresh data load during development
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
+  const payload = await getPayload({ config });
 
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  // 1. Fetch the Home Page Data
+  const homeData = await payload.findGlobal({ slug: 'home-page' });
+
+  // 2. Fetch the Footer Data
+  const footerData = await payload.findGlobal({ slug: 'footer' });
+
 
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
+    <>
+      {/* Assuming HeroSection might also get data eventually! */}
+      <HeroSection data={homeData.hero} />
+
+      {/* Dynamic Legacy Introduction */}
+      <div className="py-28 px-6 md:px-16 bg-surface-dim/30 border-y border-outline-variant/10 text-center max-w-360 mx-auto">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">
+            {homeData.philosophy?.subheading}
+          </span>
+          <p className="font-display text-2xl sm:text-3xl text-on-surface leading-snug font-light">
+            &quot;{homeData.philosophy?.quote}&quot;
+          </p>
+          <div className="w-12 h-px bg-outline-variant/55 mx-auto" />
+          <p className="font-sans text-xs text-on-surface-variant max-w-lg mx-auto leading-relaxed tracking-wider font-light">
+            {homeData.philosophy?.description}
+          </p>
         </div>
       </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
+
+      <div id="showreel-anchor">
+        <ShowreelSection data={homeData.showreel} />
       </div>
-    </div>
-  )
+
+      {/* Pass the explicitly chosen 4 featured projects */}
+      <RecentChapters data={homeData.featuredWord} />
+      
+      <Footer data={footerData} />
+    </>
+  );
 }

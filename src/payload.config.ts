@@ -7,6 +7,11 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Archives } from './collections/Archives'
+import { StoryPage } from './globals/StoryPage'
+import { HomePage } from './globals/HomePage'
+import { Footer } from './globals/Footer'
+import { Header } from './globals/Header'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -16,10 +21,13 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
-    },
+    }
   },
-  collections: [Users, Media],
-  editor: lexicalEditor(),
+
+  collections: [Users, Media, Archives],
+  globals: [Header, HomePage, StoryPage, Footer],
+
+  editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
