@@ -21,7 +21,6 @@ export default function ShowreelSection({ data }: { data: any }) {
 
   // Gets the video URL from your archive's text field
   const videoUrl = typeof archive === 'object' ? archive?.media.url : '';
-  console.log("this is inside reels:", archive)
 
   // Gets the thumbnail image from your archive's media relation
   // const posterUrl = typeof archive?.thumbnail === 'object' ? archive.thumbnail?.url : '';
