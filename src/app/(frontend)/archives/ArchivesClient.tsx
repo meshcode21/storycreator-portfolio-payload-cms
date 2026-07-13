@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MOTIONS, STILLS } from '@/data';
 import { MotionItem } from '@/types';
 import { Play, MapPin, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 
-function ArchivesViewInner() {
+export default function ArchivesClient() {
   const [activeView, setActiveView] = useState<'motion' | 'stills'>('motion');
 
   // Lightbox States
@@ -300,8 +300,4 @@ function ArchivesViewInner() {
 
     </div>
   );
-}
-
-export default function ArchivesView() {
-  return <ArchivesViewInner />;
 }

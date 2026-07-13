@@ -5,6 +5,7 @@ import TopNavBar from "@/components/Header";
 import Header from "@/components/Header";
 import { getPayload } from "payload";
 import config from '@/payload.config'
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +31,10 @@ export default async function RootLayout({
   const payload = await getPayload({ config });
 
   // 2. Fetch the Header Global data
-  const headerData = await payload.findGlobal({
-    slug: 'header',
-  });
+  const headerData = await payload.findGlobal({ slug: 'header' });
+
+  const footerData = await payload.findGlobal({ slug: 'footer' });
+
   return (
     <html
       lang="en"
@@ -41,6 +43,7 @@ export default async function RootLayout({
       <body>
         <Header data={headerData} />
         {children}
+        <Footer data={footerData} />
       </body>
     </html>
   );

@@ -13,10 +13,6 @@ export default async function HomePage() {
   // 1. Fetch the Home Page Data
   const homeData = await payload.findGlobal({ slug: 'home-page' });
 
-  // 2. Fetch the Footer Data
-  const footerData = await payload.findGlobal({ slug: 'footer' });
-
-
   return (
     <>
       {/* Assuming HeroSection might also get data eventually! */}
@@ -44,8 +40,6 @@ export default async function HomePage() {
 
       {/* Pass the explicitly chosen 4 featured projects */}
       <RecentChapters data={homeData.featuredWord} />
-      
-      <Footer data={footerData} />
     </>
   );
 }

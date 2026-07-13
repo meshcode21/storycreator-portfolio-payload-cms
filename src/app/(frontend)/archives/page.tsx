@@ -1,8 +1,7 @@
-import ArchivesView from './ArchivesView'
-import React from 'react'
+import ArchivesClient from './ArchivesClient'
 
 export default function page() {
     return (
-        <ArchivesView />
+        <ArchivesClient />
     )
 }
