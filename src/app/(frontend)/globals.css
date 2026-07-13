@@ -80,26 +80,3 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
-
-/* Custom Masonry Column Layout rules */
-.stills-masonry {
-  column-count: 1;
-  column-gap: 24px;
-}
-
-@media (min-width: 640px) {
-  .stills-masonry {
-    column-count: 2;
-  }
-}
-
-@media (min-width: 1024px) {
-  .stills-masonry {
-    column-count: 3;
-  }
-}
-
-.stills-masonry-item {
-  break-inside: avoid;
-  margin-bottom: 24px;
-}

@@ -2,6 +2,10 @@ import { GlobalConfig } from 'payload'
 
 export const HomePage: GlobalConfig = {
     slug: 'home-page',
+    admin: {
+        group: 'Pages',
+        description: 'Manage page metadata and curate items from your Archives collection.',
+    },
     fields: [
         // --- Hero Section ---
         {
@@ -93,7 +97,7 @@ export const HomePage: GlobalConfig = {
             fields: [
                 { name: 'subTitle', type: 'text', defaultValue: 'Selected Work' },
                 { name: 'title', type: 'text', defaultValue: 'Recent Chapters' },
-                { name: 'cta-redirect', type: 'text',label:'Redirect To', defaultValue: '/archives' },
+                { name: 'cta-redirect', type: 'text', label: 'Redirect To', defaultValue: '/archives' },
                 {
                     name: 'workList',
                     type: 'relationship',

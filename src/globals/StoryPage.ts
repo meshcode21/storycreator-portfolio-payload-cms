@@ -2,6 +2,10 @@ import { GlobalConfig } from 'payload'
 
 export const StoryPage: GlobalConfig = {
   slug: 'story-page',
+  admin: {
+    group: 'Pages',
+    description: 'Manage page metadata and curate items from your Archives collection.',
+  },
   fields: [
     {
       name: 'name',

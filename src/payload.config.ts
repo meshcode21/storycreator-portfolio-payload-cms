@@ -14,6 +14,7 @@ import { HomePage } from './globals/HomePage'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
 import { Logos } from './globals/Logos'
+import { ArchivesPage } from './globals/ArchivesPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,7 +28,7 @@ export default buildConfig({
   },
 
   collections: [Users, Media, Archives],
-  globals: [Logos, Header, HomePage, StoryPage, Footer],
+  globals: [Logos, Header, HomePage, ArchivesPage, StoryPage, Footer],
 
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',

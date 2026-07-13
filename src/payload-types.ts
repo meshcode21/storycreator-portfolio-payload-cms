@@ -93,6 +93,7 @@ export interface Config {
     logos: Logo;
     header: Header;
     'home-page': HomePage;
+    'archives-page': ArchivesPage;
     'story-page': StoryPage;
     footer: Footer;
   };
@@ -100,6 +101,7 @@ export interface Config {
     logos: LogosSelect<false> | LogosSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'archives-page': ArchivesPageSelect<false> | ArchivesPageSelect<true>;
     'story-page': StoryPageSelect<false> | StoryPageSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
@@ -393,6 +395,8 @@ export interface Header {
   createdAt?: string | null;
 }
 /**
+ * Manage page metadata and curate items from your Archives collection.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-page".
  */
@@ -435,6 +439,24 @@ export interface HomePage {
   createdAt?: string | null;
 }
 /**
+ * Manage page metadata and curate items from your Archives collection.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "archives-page".
+ */
+export interface ArchivesPage {
+  id: number;
+  subTitle?: string | null;
+  heroTitle?: string | null;
+  heroDescription?: string | null;
+  stills?: (number | Archive)[] | null;
+  motion?: (number | Archive)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Manage page metadata and curate items from your Archives collection.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "story-page".
  */
@@ -572,6 +594,20 @@ export interface HomePageSelect<T extends boolean = true> {
         'cta-redirect'?: T;
         workList?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "archives-page_select".
+ */
+export interface ArchivesPageSelect<T extends boolean = true> {
+  subTitle?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  stills?: T;
+  motion?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
