@@ -1,6 +1,5 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import RecentChapters from "@/components/RecentChapters";
 import ShowreelSection from "@/components/ShowreelSection";

@@ -90,12 +90,14 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    logos: Logo;
     header: Header;
     'home-page': HomePage;
     'story-page': StoryPage;
     footer: Footer;
   };
   globalsSelect: {
+    logos: LogosSelect<false> | LogosSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'story-page': StoryPageSelect<false> | StoryPageSelect<true>;
@@ -360,6 +362,17 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logos".
+ */
+export interface Logo {
+  id: number;
+  primaryLogo: number | Media;
+  secondaryLogo: number | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
 export interface Header {
@@ -483,6 +496,17 @@ export interface Footer {
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logos_select".
+ */
+export interface LogosSelect<T extends boolean = true> {
+  primaryLogo?: T;
+  secondaryLogo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
